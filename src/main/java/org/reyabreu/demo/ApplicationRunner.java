@@ -1,4 +1,4 @@
-package org.reyabreu.test;
+package org.reyabreu.demo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,10 @@ public class ApplicationRunner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		logger.info("hello world!");
+
+		if (args.length > 1) {
+			logger.error("too many arguments supplied. Please use a valid postcode");
+		}
 	}
 
 }

@@ -1,4 +1,4 @@
-package org.reyabreu.test;
+package org.reyabreu.demo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package org.reyabreu.test;
+package org.reyabreu.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

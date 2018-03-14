@@ -13,12 +13,15 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 group = 'org,reyabreu'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+
+mainClassName = "org.reyabreu.demo.Application"
 
 repositories {
 	mavenCentral()
@@ -27,7 +30,8 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
-    compile('org.springframework:spring-web')	
-	runtime('org.springframework.boot:spring-boot-devtools')
+    compile('org.springframework:spring-web')
+    compile('com.fasterxml.jackson.core:jackson-databind')
+    compile('org.apache.commons:commons-lang3')    
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
