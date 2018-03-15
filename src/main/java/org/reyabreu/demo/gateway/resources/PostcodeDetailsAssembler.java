@@ -1,4 +1,4 @@
-package org.reyabreu.demo.web;
+package org.reyabreu.demo.gateway.resources;
 
 import org.reyabreu.demo.domain.PostcodeDetails;
 import org.springframework.stereotype.Component;

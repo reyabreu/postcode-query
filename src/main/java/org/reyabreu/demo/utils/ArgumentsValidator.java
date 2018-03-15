@@ -1,4 +1,4 @@
-package org.reyabreu.demo.web.utils;
+package org.reyabreu.demo.utils;
 
 import org.reyabreu.demo.exceptions.InvalidInputException;
 import org.springframework.beans.factory.annotation.Autowired;

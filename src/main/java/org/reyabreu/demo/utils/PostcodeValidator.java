@@ -1,4 +1,4 @@
-package org.reyabreu.demo.web.utils;
+package org.reyabreu.demo.utils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.reyabreu.demo.exceptions.InvalidInputException;

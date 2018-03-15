@@ -1,4 +1,4 @@
-package org.reyabreu.demo.config;
+package org.reyabreu.demo.gateway.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

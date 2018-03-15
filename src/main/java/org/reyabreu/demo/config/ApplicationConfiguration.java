@@ -1,5 +1,6 @@
 package org.reyabreu.demo.config;
 
+import org.reyabreu.demo.gateway.config.GatewayProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;

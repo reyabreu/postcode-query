@@ -1,0 +1,12 @@
+---
+logging:
+  level:
+    org.springframework: ERROR
+    org.reyabreu.demo: INFO
+
+api:
+  postcodes:
+    uri:
+      lookup: https://api.postcodes.io/postcodes/%s      
+      validate: https://api.postcodes.io/postcodes/%s/validate
+      nearest: https://api.postcodes.io/postcodes/%s/nearest
