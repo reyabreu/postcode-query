@@ -8,17 +8,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PostcodesResponseResource {
 
 	private String status;
-	private PostcodesResultResponse result;
+	private PostcodesResultResponseResource result;
 
 	@JsonCreator
 	public PostcodesResponseResource(@JsonProperty(required = true) String status,
-			@JsonProperty(required = true) PostcodesResultResponse result) {
+			@JsonProperty(required = true) PostcodesResultResponseResource result) {
 		super();
 		this.status = status;
 		this.result = result;
 	}
 
-	public PostcodesResultResponse getResult() {
+	public PostcodesResultResponseResource getResult() {
 		return result;
 	}
 

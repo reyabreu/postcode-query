@@ -12,10 +12,8 @@ public class ApplicationRunner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+    logger.info("running...");
 
-		if (args.length > 1) {
-			logger.error("too many arguments supplied. Please use a valid postcode");
-		}
 	}
 
 }

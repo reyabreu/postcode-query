@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PostcodesResultResponse {
+public class PostcodesResultResponseResource {
 
 	private String country;
 	private String region;
 
 	@JsonCreator
-	public PostcodesResultResponse(@JsonProperty(required = true) String country,
+	public PostcodesResultResponseResource(@JsonProperty(required = true) String country,
 			@JsonProperty(required = false) String region) {
 		super();
 		this.country = country;
