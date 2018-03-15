@@ -7,14 +7,23 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "api.postcodes")
 public class GatewayProperties {
 
-  private Map<String, String> uri;
+  private String baseUri;
+  private Map<String, String> paths;
 
-  public Map<String, String> getUri() {
-    return uri;
+  public String getBaseUri() {
+    return baseUri;
   }
 
-  public void setUri(Map<String, String> uri) {
-    this.uri = uri;
+  public void setBaseUri(String baseUri) {
+    this.baseUri = baseUri;
+  }
+
+  public Map<String, String> getPaths() {
+    return paths;
+  }
+
+  public void setPaths(Map<String, String> paths) {
+    this.paths = paths;
   }
 
 }

@@ -1,16 +1,29 @@
 package org.reyabreu.demo.utils;
 
-import org.apache.commons.lang3.StringUtils;
-import org.reyabreu.demo.exceptions.InvalidInputException;
+import org.reyabreu.demo.services.PostcodesService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import java.util.regex.Pattern;
 
 @Component
 public class PostcodeValidator {
 
-	public void validate(final String postcode) {
-    if (StringUtils.isBlank(postcode)) {
-      throw new InvalidInputException("postcode cannot be empty");
+  private final Pattern pattern;
+
+  @Autowired
+  private PostcodesService postcodesService;
+
+  public PostcodeValidator(@Value("${regex}") String regex) {
+    super();
+    this.pattern = Pattern.compile(regex);
+  }
+
+  public void validate(final String postcode) {
+    if (!(pattern.matcher(postcode).matches() && postcodesService.isValid(postcode))) {
+      throw new IllegalArgumentException(String.format("'%s' is an invalid postcode.", postcode));
     }
-	}
+  }
 
 }

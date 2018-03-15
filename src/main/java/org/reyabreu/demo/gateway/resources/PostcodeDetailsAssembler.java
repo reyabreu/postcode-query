@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class PostcodeDetailsAssembler {
 
-  public PostcodeDetails toPostcodeDetails(final PostcodesResponseResource resource) {
-    final PostcodesResultResponseResource resultResource = resource.getResult();
+  public PostcodeDetails toPostcodeDetails(final LookupResource resource) {
+    final LookupResultResource resultResource = resource.getResult();
     return new PostcodeDetails(resultResource.getCountry(), resultResource.getRegion());
   }
 

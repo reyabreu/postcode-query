@@ -1,15 +1,15 @@
 package org.reyabreu.demo.services;
 
-import java.util.List;
-
 import org.reyabreu.demo.domain.PostcodeDetails;
+
+import java.util.List;
 
 public interface PostcodesService {
 
-	PostcodeDetails findDetails(final String postcode);
+  PostcodeDetails getDetails(final String postcode);
 
-	boolean validate(final String postcode);
+  Boolean isValid(final String postcode);
 
-	List<PostcodeDetails> findNearest(final String postcode);
+  List<PostcodeDetails> findNearestPostcodes(final String postcode);
 
 }

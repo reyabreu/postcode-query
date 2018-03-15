@@ -6,15 +6,15 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import java.util.Objects;
 
 /**
- * This is the domain object that will be used in our application.
+ * This is the domain object that will be used in the business layer.
  * 
  * @author reynaldoabreu
  *
  */
 public class PostcodeDetails {
 
-  private String country;
-  private String region;
+  private final String country;
+  private final String region;
 
   public PostcodeDetails(String country, String region) {
     super();
@@ -24,13 +24,16 @@ public class PostcodeDetails {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
+    if (this == obj) {
       return true;
-    if (obj == null)
+    }
+    if (obj == null) {
       return false;
-    if (getClass() != obj.getClass())
+    }
+    if (getClass() != obj.getClass()) {
       return false;
-    PostcodeDetails other = (PostcodeDetails) obj;
+    }
+    final PostcodeDetails other = (PostcodeDetails) obj;
     return Objects.equals(country, other.country) && Objects.equals(region, other.region);
   }
 

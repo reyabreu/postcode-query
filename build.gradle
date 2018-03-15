@@ -39,3 +39,14 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('com.github.tomakehurst:wiremock:2.14.0')	
 }
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+bootRun {
+  args = ["PE276HU"]
+}

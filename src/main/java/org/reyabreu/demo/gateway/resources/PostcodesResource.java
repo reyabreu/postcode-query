@@ -1,7 +1,6 @@
 package org.reyabreu.demo.gateway.resources;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -10,25 +9,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class PostcodesResultResponseResource {
+public class PostcodesResource {
 
-  private String country;
-  private String region;
+  @JsonProperty(required = true)
+  private String status;
 
-  @JsonCreator
-  public PostcodesResultResponseResource(@JsonProperty(required = true) String country,
-      @JsonProperty(required = false) String region) {
-    super();
-    this.country = country;
-    this.region = region;
+  @JsonProperty
+  private String error;
+
+  public PostcodesResource() {
   }
 
-  public String getCountry() {
-    return country;
+  public String getError() {
+    return error;
   }
 
-  public String getRegion() {
-    return region;
+  public String getStatus() {
+    return status;
   }
 
+  public void setError(String error) {
+    this.error = error;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
 }

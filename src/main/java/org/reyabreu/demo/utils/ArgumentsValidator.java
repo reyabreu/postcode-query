@@ -1,6 +1,5 @@
 package org.reyabreu.demo.utils;
 
-import org.reyabreu.demo.exceptions.InvalidInputException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,10 +10,13 @@ public class ArgumentsValidator {
   private PostcodeValidator postcodeValidator;
 
   public void validate(String... args) {
-    if (args.length != 1) {
-      throw new InvalidInputException("Please supply a single valid postcode as argument");
+    if (args.length == 0) {
+      throw new IllegalArgumentException("no argument supplied.");
     }
-    final String postcode = args[0];
+    if (args.length > 1) {
+      throw new IllegalArgumentException("too many arguments.");
+    }
+    String postcode = args[0];
     postcodeValidator.validate(postcode);
   }
 
