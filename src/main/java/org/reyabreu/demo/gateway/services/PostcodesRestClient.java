@@ -6,6 +6,7 @@ import java.util.Map;
 import org.reyabreu.demo.gateway.config.GatewayProperties;
 import org.reyabreu.demo.gateway.resources.LookupResource;
 import org.reyabreu.demo.gateway.resources.NearestResource;
+import org.reyabreu.demo.gateway.resources.PostcodesResource;
 import org.reyabreu.demo.gateway.resources.ValidateResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -30,7 +31,7 @@ public class PostcodesRestClient {
     return gatewayProperties.getBaseUri() + pathsMap.get(key);
   }
 
-  protected <T> T get(String path, String postcode, Class<T> resourceType) {
+  protected <T extends PostcodesResource> T get(String path, String postcode, Class<T> resourceType) {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON_UTF8));
 

@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public abstract class PostcodesResource {
 
   @JsonProperty(required = true)
-  private String status;
+  private Integer status;
 
   @JsonProperty
   private String error;
@@ -21,7 +21,7 @@ public abstract class PostcodesResource {
     return error;
   }
 
-  public String getStatus() {
+  public Integer getStatus() {
     return status;
   }
 
@@ -29,7 +29,7 @@ public abstract class PostcodesResource {
     this.error = error;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(Integer status) {
     this.status = status;
   }
 }

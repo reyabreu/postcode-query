@@ -14,9 +14,6 @@ import org.springframework.stereotype.Component;
 @Profile("prod")
 public class ApplicationRunner implements CommandLineRunner {
 
-  // private final Logger logger =
-  // LoggerFactory.getLogger(ApplicationRunner.class);
-
   @Autowired
   private ArgumentsValidator argumentsValidator;
 
@@ -35,10 +32,20 @@ public class ApplicationRunner implements CommandLineRunner {
       postcodeValidator.validate(postcode);
       PostcodeDetails details = service.getDetails(postcode);
 
-      System.out.println("\nPostcode details:");
-      System.out.println("  Postcode: " + details.getPostcode());
-      System.out.println("   Country: " + details.getCountry());
-      System.out.println("    Region: " + details.getRegion());
+      System.out.println("\n\tPostcode details:");
+      System.out.println("\t-----------------");
+      System.out.println("\t  Postcode: " + details.getPostcode());
+      System.out.println("\t   Country: " + details.getCountry());
+      System.out.println("\t    Region: " + details.getRegion());
+
+      System.out.println("\n\tNearest Postcode(s):");
+      System.out.println("\t---------------------");
+      service.findNearestPostcodes(postcode).stream().forEach(x -> {
+        System.out.println("\t  Postcode: " + x.getPostcode());
+        System.out.println("\t   Country: " + x.getCountry());
+        System.out.println("\t    Region: " + x.getRegion());
+        System.out.println();
+      });
 
     } catch (IllegalArgumentException ex) {
       throw new FatalCommandLineException("Invalid program input", ex);
