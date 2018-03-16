@@ -12,11 +12,12 @@ public class PostcodeValidator {
 
   private final Pattern pattern;
 
-  @Autowired
-  private PostcodesService postcodesService;
+  private final PostcodesService postcodesService;
 
-  public PostcodeValidator(@Value("${regex}") String regex) {
+  @Autowired
+  public PostcodeValidator(PostcodesService postcodesService, @Value("${regex}") String regex) {
     super();
+    this.postcodesService = postcodesService;
     this.pattern = Pattern.compile(regex);
   }
 

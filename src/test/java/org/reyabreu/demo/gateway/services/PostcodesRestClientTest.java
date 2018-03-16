@@ -6,12 +6,12 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.reyabreu.demo.gateway.config.GatewayProperties;
 import org.reyabreu.demo.gateway.resources.LookupResource;
 import org.reyabreu.demo.gateway.resources.NearestResource;
@@ -22,23 +22,25 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+@RunWith(MockitoJUnitRunner.class)
 public class PostcodesRestClientTest {
 
   @Mock
-  GatewayProperties gatewayPropertiesMock;
+  private GatewayProperties gatewayPropertiesMock;
 
   @Mock
-  RestTemplate restTemplateMock;
+  private RestTemplate restTemplateMock;
 
   @InjectMocks
-  PostcodesRestClient postcodesRestClient;
+  private PostcodesRestClient postcodesRestClient;
 
   @Test
   public void nearest_postcode_getDetails() {
-    ResponseEntity<NearestResource> response = new ResponseEntity<>(
-        PostcodesRestClientTestFixture.createNearestResponse(), HttpStatus.OK);
-    when(restTemplateMock.exchange(anyString(), eq(HttpMethod.GET), ArgumentMatchers.<HttpEntity<String>>any(),
-        eq(NearestResource.class), anyString())).thenReturn(response);
+    ResponseEntity<NearestResource> response =
+        new ResponseEntity<>(PostcodesRestClientTestFixture.createNearestResponse(), HttpStatus.OK);
+    when(restTemplateMock.exchange(anyString(), eq(HttpMethod.GET),
+        ArgumentMatchers.<HttpEntity<String>>any(), eq(NearestResource.class), anyString()))
+            .thenReturn(response);
 
     NearestResource actual = postcodesRestClient.nearestPostcodes("postcode");
 
@@ -51,10 +53,11 @@ public class PostcodesRestClientTest {
 
   @Test
   public void lookup_postcode_getDetails() {
-    ResponseEntity<LookupResource> response = new ResponseEntity<>(
-        PostcodesRestClientTestFixture.createLookupResource(), HttpStatus.OK);
-    when(restTemplateMock.exchange(anyString(), eq(HttpMethod.GET), ArgumentMatchers.<HttpEntity<String>>any(),
-        eq(LookupResource.class), anyString())).thenReturn(response);
+    ResponseEntity<LookupResource> response =
+        new ResponseEntity<>(PostcodesRestClientTestFixture.createLookupResource(), HttpStatus.OK);
+    when(restTemplateMock.exchange(anyString(), eq(HttpMethod.GET),
+        ArgumentMatchers.<HttpEntity<String>>any(), eq(LookupResource.class), anyString()))
+            .thenReturn(response);
 
     LookupResource actual = postcodesRestClient.lookup("postcode");
 
@@ -64,17 +67,13 @@ public class PostcodesRestClientTest {
     assertThat(actual.getResult().getCountry(), is("country"));
   }
 
-  @Before
-  public void setUp() {
-    MockitoAnnotations.initMocks(this);
-  }
-
   @Test
   public void validate_postcode_ok() {
     ResponseEntity<ValidateResource> responseResource = new ResponseEntity<>(
         PostcodesRestClientTestFixture.createValidateResource(), HttpStatus.OK);
-    when(restTemplateMock.exchange(anyString(), eq(HttpMethod.GET), ArgumentMatchers.<HttpEntity<String>>any(),
-        eq(ValidateResource.class), anyString())).thenReturn(responseResource);
+    when(restTemplateMock.exchange(anyString(), eq(HttpMethod.GET),
+        ArgumentMatchers.<HttpEntity<String>>any(), eq(ValidateResource.class), anyString()))
+            .thenReturn(responseResource);
 
     ValidateResource actual = postcodesRestClient.validate("postcode");
 

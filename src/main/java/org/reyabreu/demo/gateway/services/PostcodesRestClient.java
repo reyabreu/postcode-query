@@ -1,8 +1,5 @@
 package org.reyabreu.demo.gateway.services;
 
-import java.util.Arrays;
-import java.util.Map;
-
 import org.reyabreu.demo.gateway.config.GatewayProperties;
 import org.reyabreu.demo.gateway.resources.LookupResource;
 import org.reyabreu.demo.gateway.resources.NearestResource;
@@ -17,14 +14,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+import java.util.Map;
+
 @Component
 public class PostcodesRestClient {
 
-  @Autowired
-  private GatewayProperties gatewayProperties;
+  private final GatewayProperties gatewayProperties;
+  private final RestTemplate restTemplate;
 
   @Autowired
-  private RestTemplate restTemplate;
+  public PostcodesRestClient(RestTemplate restTemplate, GatewayProperties gatewayProperties) {
+    super();
+    this.restTemplate = restTemplate;
+    this.gatewayProperties = gatewayProperties;
+  }
 
   private String getUri(final String key) {
     final Map<String, String> pathsMap = gatewayProperties.getPaths();
