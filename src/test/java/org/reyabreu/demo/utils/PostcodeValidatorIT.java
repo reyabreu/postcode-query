@@ -14,8 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @ActiveProfiles("test")
 public class PostcodeValidatorIT {
 
-  // Logger logger = LoggerFactory.getLogger(this.getClass());
-
   @Autowired
   private PostcodeValidator postcodeValidator;
 

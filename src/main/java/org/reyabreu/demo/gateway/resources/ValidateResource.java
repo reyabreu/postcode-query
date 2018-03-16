@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ValidateResource extends PostcodesResource {
 
-  @JsonProperty(required = true)
+  @JsonProperty
   private Boolean result;
 
   public ValidateResource() {

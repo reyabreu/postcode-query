@@ -1,13 +1,15 @@
 package org.reyabreu.demo.services;
 
+import java.util.List;
+
 import org.reyabreu.demo.domain.PostcodeDetails;
 import org.reyabreu.demo.gateway.resources.LookupResource;
+import org.reyabreu.demo.gateway.resources.NearestResource;
 import org.reyabreu.demo.gateway.resources.PostcodeDetailsAssembler;
 import org.reyabreu.demo.gateway.resources.ValidateResource;
+import org.reyabreu.demo.gateway.services.PostcodesRestClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class PostcodesServiceImpl implements PostcodesService {
@@ -32,8 +34,8 @@ public class PostcodesServiceImpl implements PostcodesService {
 
   @Override
   public List<PostcodeDetails> findNearestPostcodes(String postcode) {
-    // TODO Auto-generated method stub
-    return null;
+    NearestResource resource = client.nearestPostcodes(postcode);
+    return assembler.toPostcodeDetailsList(resource);
   }
 
 }

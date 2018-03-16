@@ -9,16 +9,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class PostcodesResource {
+public abstract class PostcodesResource {
 
   @JsonProperty(required = true)
   private String status;
 
   @JsonProperty
   private String error;
-
-  public PostcodesResource() {
-  }
 
   public String getError() {
     return error;

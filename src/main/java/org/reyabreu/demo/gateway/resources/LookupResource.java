@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LookupResource extends PostcodesResource {
 
-  @JsonProperty(required = true)
+  @JsonProperty
   private LookupResultResource result;
 
   public LookupResource() {
