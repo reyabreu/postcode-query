@@ -6,7 +6,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
- * This is the domain object that will be used in the business layer.
+ * This is the domain object that will be used in the business layer. A builder
+ * is provided for fluent semantics as to maintain a suitable constructor
+ * signature.
  * 
  * @author reynaldoabreu
  *
