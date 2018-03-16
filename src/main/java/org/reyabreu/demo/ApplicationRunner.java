@@ -49,6 +49,8 @@ public class ApplicationRunner implements CommandLineRunner {
 
     } catch (IllegalArgumentException ex) {
       throw new FatalCommandLineException("Invalid program input", ex);
+    } catch (RuntimeException ex) {
+      throw new FatalCommandLineException("Resource Request failure", ex);
     }
   }
 

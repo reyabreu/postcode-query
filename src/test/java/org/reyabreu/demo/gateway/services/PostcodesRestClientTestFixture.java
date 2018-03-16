@@ -25,11 +25,25 @@ public class PostcodesRestClientTestFixture {
     return result;
   }
 
+  public static LookupResource createLookupFailureResource() {
+    LookupResource result = new LookupResource();
+    result.setError("bad request");
+    result.setStatus(400);
+    return result;
+  }
+
   public static NearestResource createNearestResponse() {
     NearestResource responseResource = new NearestResource();
     responseResource.setStatus(200);
     responseResource.setResult(Stream.of(createLookupResultResource()).collect(Collectors.toList()));
     return responseResource;
+  }
+
+  public static ValidateResource createValidateFailureResource() {
+    ValidateResource result = new ValidateResource();
+    result.setError("server error");
+    result.setStatus(500);
+    return result;
   }
 
   public static ValidateResource createValidateResource() {

@@ -1,17 +1,20 @@
 package org.reyabreu.demo.utils;
 
+import java.util.regex.Pattern;
+
 import org.reyabreu.demo.services.PostcodesService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.regex.Pattern;
-
 @Component
 public class PostcodeValidator {
 
-  private final Pattern pattern;
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+  private final Pattern pattern;
   private final PostcodesService postcodesService;
 
   @Autowired
@@ -25,6 +28,7 @@ public class PostcodeValidator {
     if (!(pattern.matcher(postcode).matches() && postcodesService.isValid(postcode))) {
       throw new IllegalArgumentException(String.format("'%s' is an invalid postcode.", postcode));
     }
+    logger.debug("postcode '{}' is valid.", postcode);
   }
 
 }

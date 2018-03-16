@@ -38,8 +38,8 @@ public class PostcodeValidatorTest {
   public void validate_validPostCodes_ok() {
     when(serviceMock.isValid(anyString())).thenReturn(true);
 
-    postcodeValidator.validate("PE276HU");
-    postcodeValidator.validate("PE27 6HU");
+    postcodeValidator.validate("CB30FA");
+    postcodeValidator.validate("CB3 0FA");
     verify(serviceMock, Mockito.times(2)).isValid(anyString());
   }
 
